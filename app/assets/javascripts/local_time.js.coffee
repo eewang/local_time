@@ -122,23 +122,18 @@ class RelativeTime
     sec = Math.round ms  / 1000
     min = Math.round sec / 60
     hr  = Math.round min / 60
+    day = Math.round hr / 24
 
     if ms < 0
       null
-    else if sec < 10
-      "a second"
-    else if sec < 45
-      "#{sec} seconds"
-    else if sec < 90
-      "a minute"
-    else if min < 45
-      "#{min} minutes"
-    else if min < 90
-      "an hour"
+    else if sec < 60
+      "#{sec}s"
+    else if min < 60
+      "#{min}m"
     else if hr < 24
-      "#{hr} hours"
+      "#{hr}h"
     else
-      null
+      "#{day}d"
 
   relativeWeekday: ->
     daysPassed = @calendarDate.daysPassed()
