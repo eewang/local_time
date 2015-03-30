@@ -35,6 +35,12 @@ module LocalTimeHelper
     local_relative_time time, options
   end
 
+  def local_time_elapsed(time, options = nil)
+    options, type = extract_options_and_value(options, :type)
+    options[:type] = 'time-elapsed'
+    local_relative_time time, options
+  end
+
   def utc_time(time_or_date)
     if time_or_date.respond_to?(:in_time_zone)
       time_or_date.in_time_zone.utc

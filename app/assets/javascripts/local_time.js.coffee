@@ -161,6 +161,9 @@ relativeDate = (date) ->
 relativeTimeAgo = (date) ->
   new RelativeTime(date).toString()
 
+relativeTimeElapsed = (date) ->
+  new RelativeTime(date).timeElapsed()
+
 relativeTimeOrDate = (date) ->
   new RelativeTime(date).toTimeOrDateString()
 
@@ -212,6 +215,8 @@ document.addEventListener "DOMContentLoaded", ->
           strftime time, format
         when "time-ago"
           relativeTimeAgo time
+        when "time-elapsed"
+          relativeTimeElapsed time
         when "time-or-date"
           relativeTimeOrDate time
         when "weekday"
@@ -225,4 +230,4 @@ run = ->
 setInterval run, 60 * 1000
 
 # Public API
-@LocalTime = {relativeDate, relativeTimeAgo, relativeTimeOrDate, relativeWeekday, run, strftime}
+@LocalTime = {relativeDate, relativeTimeAgo, relativeTimeElapsed, relativeTimeOrDate, relativeWeekday, run, strftime}
